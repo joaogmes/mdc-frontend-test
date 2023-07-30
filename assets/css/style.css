@@ -276,6 +276,13 @@ span.title {
   box-shadow: 0px 0px 5px var(--red);
 }
 
+.app .app-container .app-body #test3 .dynamic-facts {
+  font-weight: bold;
+  padding: 1rem;
+  background-color: var(--light);
+  margin: 1rem 0;
+}
+
 @media screen and (max-width: 768px) {
   .app .app-container .app-header {
     grid-template-areas:

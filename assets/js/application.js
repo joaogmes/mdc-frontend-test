@@ -74,9 +74,11 @@ const IndexPage = {
       case "test1":
         Test1Page.init();
         break;
-      case "test2":
+      /*
+     case "test2":
         Test2Page.init();
         break;
+        */
       case "test3":
         Test3Page.init();
         break;
@@ -101,5 +103,34 @@ const Test1Page = {
       var dynamicParagraph = document.querySelector(`#test1 .dynamic-paragraph`);
       dynamicParagraph.innerHTML = randomParagraphContent;
     });
+  },
+};
+
+const Test3Page = {
+  init: () => {
+    console.log("Test 3 initialized");
+
+    var updateFactButton = document.querySelector("#test3 .update-fact");
+    updateFactButton.addEventListener("click", (event) => {
+      var facts = document.querySelector(`#test3 .dynamic-facts`);
+      Test3Page.updateFact(facts);
+    });
+  },
+  updateFact: (element) => {
+    fetch(`https://catfact.ninja/fact`)
+      /* .then((response) => {
+        console.log(response.text());
+        element.innerHTML = response;
+      }) */
+      .then((response) => response.json())
+      .then((htmlContent) => {
+        element.innerHTML = htmlContent.fact;
+        /* var appBodyElement = document.querySelector(`${IndexPage.htmlSelector} .app-body`);
+        appBodyElement.innerHTML = htmlContent;
+        IndexPage.initObject(page); */
+      })
+      .catch((error) => {
+        console.error("Error loading content:", error);
+      });
   },
 };
