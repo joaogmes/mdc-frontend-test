@@ -43,6 +43,27 @@ span.title {
   display: flex;
 }
 
+.app .btn {
+  display: inline-flex;
+  margin: 1rem;
+  padding: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px var(--gray);
+}
+
+.app .btn.dark {
+  background: var(--dark);
+  color: white;
+  border: solid 1px var(--black);
+}
+
+.app .btn.light {
+  background: var(--dark);
+  color: white;
+  border: solid 1px var(--gray);
+}
+
 .app .app-container {
   display: grid;
   grid-template-areas:
@@ -193,6 +214,18 @@ span.title {
   cursor: pointer;
   font-weight: 600;
   transform: scale(1.15);
+}
+
+.app .app-container .app-body #test1 p {
+  line-height: 1.5rem;
+}
+
+.app .app-container .app-body #test1 ol {
+  margin: 1rem 2rem;
+}
+
+.app .app-container .app-body #test1 .dynamic-paragraph {
+  font-weight: 600;
 }
 
 @media screen and (max-width: 600px) {
