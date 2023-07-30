@@ -228,7 +228,55 @@ span.title {
   font-weight: 600;
 }
 
-@media screen and (max-width: 600px) {
+.app .app-container .app-body #test2 {
+  display: grid;
+  width: 100%;
+  grid-template-areas: "rt-1 rt-2 rt-3";
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.app .app-container .app-body #test2 .rt {
+  aspect-ratio: 2/1;
+  min-width: 200px;
+  max-width: 400px;
+  width: 100%;
+  /* border: solid 1px var(--blue); */
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+.app .app-container .app-body #test2 .rt-1 {
+  grid-area: rt-1;
+  background-color: var(--dark);
+  color: white;
+  /* border-color: var(--dark); */
+  box-shadow: 0px 0px 5px var(--dark);
+}
+
+.app .app-container .app-body #test2 .rt-2 {
+  grid-area: rt-2;
+  background-color: var(--blue);
+  color: white;
+  /* border-color: var(--blue); */
+  box-shadow: 0px 0px 5px var(--blue);
+}
+
+.app .app-container .app-body #test2 .rt-3 {
+  background-color: var(--red);
+  color: white;
+  /* border-color: var(--red); */
+  box-shadow: 0px 0px 5px var(--red);
+}
+
+@media screen and (max-width: 768px) {
   .app .app-container .app-header {
     grid-template-areas:
       "info"
@@ -249,5 +297,14 @@ span.title {
 
   .app .app-container .app-header .show-more {
     display: block;
+  }
+
+  .app .app-container .app-body #test2 {
+    grid-template-areas:
+      "rt-1"
+      "rt-2"
+      "rt-3";
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 }
