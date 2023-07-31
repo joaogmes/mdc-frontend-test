@@ -47,7 +47,6 @@ const IndexPage = {
     return false;
   },
   toggleMenu: (event, element) => {
-    console.log("Toggle menu");
     var state = element.dataset.action;
     var menuElement = document.querySelector(".app .app-container .app-menu .menu");
     if (state == "open") {
@@ -74,11 +73,6 @@ const IndexPage = {
       case "test1":
         Test1Page.init();
         break;
-      /*
-     case "test2":
-        Test2Page.init();
-        break;
-        */
       case "test3":
         Test3Page.init();
         break;
@@ -118,19 +112,66 @@ const Test3Page = {
   },
   updateFact: (element) => {
     fetch(`https://catfact.ninja/fact`)
-      /* .then((response) => {
-        console.log(response.text());
-        element.innerHTML = response;
-      }) */
       .then((response) => response.json())
       .then((htmlContent) => {
         element.innerHTML = htmlContent.fact;
-        /* var appBodyElement = document.querySelector(`${IndexPage.htmlSelector} .app-body`);
-        appBodyElement.innerHTML = htmlContent;
-        IndexPage.initObject(page); */
       })
       .catch((error) => {
         console.error("Error loading content:", error);
       });
+  },
+};
+
+const Test4Page = {
+  errors: 0,
+  init: () => {
+    console.log("Test 4 initialized");
+    var validateButton = document.querySelector("#test4 .validate-form");
+    var validationFeedback = document.querySelector("#test4 .validate-error");
+    validateButton.addEventListener("click", (event) => {
+      console.log(validateButton.dataset.loading);
+      if (validateButton.dataset.loading == "true") {
+        console.log("Validation in process, please wait");
+        validationFeedback.innerHTML = `Validation ongoing, please wait...`;
+        return false;
+      }
+      validateButton.dataset.loading = "true";
+      Test4Page.validateForm(event, validateButton, validationFeedback);
+    });
+  },
+  validateForm: (event, element, feedbackElement) => {
+    Test4Page.errors = 0;
+    console.log("Validating form");
+    var nameElement = document.querySelector("#test4 .test-form #name");
+    var nameError = document.querySelector("#test4 .test-form .name-error");
+    if (nameElement.value == null || nameElement.value == "" || nameElement.value.length < 4) {
+      Test4Page.errors++;
+      nameError.innerHTML = `Inform your name with at least 4 characters`;
+      nameElement.setAttribute("validation", "error");
+    } else {
+      nameError.innerHTML = ``;
+      nameElement.setAttribute("validation", "success");
+    }
+
+    var emailElement = document.querySelector("#test4 .test-form #email");
+    var emailError = document.querySelector("#test4 .test-form .email-error");
+    if (nameElement.value == null || emailElement.value == "" || !Test4Page.checkMailFormat(emailElement.value)) {
+      Test4Page.errors++;
+      emailError.innerHTML = `Inform a valid email address`;
+      emailElement.setAttribute("validation", "error");
+    } else {
+      emailError.innerHTML = ``;
+      emailElement.setAttribute("validation", "success");
+    }
+
+    setTimeout(() => {
+      element.dataset.loading = "false";
+      feedbackElement.innerHTML = ``;
+    }, 1500);
+  },
+  checkMailFormat: (email) => {
+    return email.match(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
   },
 };

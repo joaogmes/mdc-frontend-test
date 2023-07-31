@@ -283,6 +283,77 @@ span.title {
   margin: 1rem 0;
 }
 
+.app .app-container .app-body #test4 .p {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.app .app-container .app-body #test4 .btn {
+  display: flex;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.app .app-container .app-body #test4 .test-form {
+  width: 100%;
+  display: grid;
+  grid-template-areas: "name age email";
+  justify-items: center;
+  align-items: start;
+  gap: 2rem;
+}
+
+.app .app-container .app-body #test4 .test-form label {
+  min-width: 200px;
+  max-width: 400px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  align-content: center;
+}
+
+.app .app-container .app-body #test4 .test-form label span {
+  display: block;
+  font-weight: 600;
+  line-height: 2rem;
+}
+
+.app .app-container .app-body #test4 .test-form label input {
+  display: block;
+  width: 100%;
+  background-color: var(--light);
+  min-height: 20px;
+  padding: 5px;
+  border-radius: 8px;
+  padding: 8px;
+  border: solid 1px var(--dark);
+}
+
+.app .app-container .app-body #test4 .test-form label input[validation="error"] {
+  border: solid 3px var(--red);
+}
+
+.app .app-container .app-body #test4 .test-form label input[validation="success"] {
+  border: solid 3px var(--blue);
+}
+
+.app .app-container .app-body #test4 .test-form .name {
+  grid-area: name;
+}
+
+.app .app-container .app-body #test4 .test-form .age {
+  grid-area: age;
+}
+
+.app .app-container .app-body #test4 .test-form .email {
+  grid-area: email;
+}
+
 @media screen and (max-width: 768px) {
   .app .app-container .app-header {
     grid-template-areas:
@@ -313,5 +384,13 @@ span.title {
       "rt-3";
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .app .app-container .app-body #test4 .test-form {
+    gap: 1rem;
+    grid-template-areas:
+      "name"
+      "age"
+      "email";
   }
 }

@@ -1,0 +1,25 @@
+<div class="page-title">
+  <span class="title"> **Test 4: Form validation*** </span>
+</div>
+<div id="test4" class="page-content">
+  <p>Here's a fresh random fact about cats:</p>
+  <form class="test-form">
+    <label class="name" for="name">
+      <span>Your name <small>(required)</small></span>
+      <input id="name" type="text" required placeholder="My Full Name" />
+      <span class="name-error"></span>
+    </label>
+    <label class="age" for="age">
+      <span>Your age</span>
+      <input id="age" type="number" min="0" step="1" pattern="[0-9]{3}" placeholder="25" />
+      <span class="age-error"></span>
+    </label>
+    <label class="email" for="email">
+      <span>Your mail <small>(required)</small></span>
+      <input id="email" type="text" required placeholder="myemailaddress@mail.com" />
+      <span class="email-error"></span>
+    </label>
+  </form>
+  <button class="btn light validate-form" data-loading="false">Validate form</button>
+  <span class="validate-error"></span>
+</div>
