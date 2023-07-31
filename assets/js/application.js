@@ -129,9 +129,7 @@ const Test4Page = {
     var validateButton = document.querySelector("#test4 .validate-form");
     var validationFeedback = document.querySelector("#test4 .validate-error");
     validateButton.addEventListener("click", (event) => {
-      console.log(validateButton.dataset.loading);
       if (validateButton.dataset.loading == "true") {
-        console.log("Validation in process, please wait");
         validationFeedback.innerHTML = `Validation ongoing, please wait...`;
         return false;
       }
@@ -141,7 +139,6 @@ const Test4Page = {
   },
   validateForm: (event, element, feedbackElement) => {
     Test4Page.errors = 0;
-    console.log("Validating form");
     var nameElement = document.querySelector("#test4 .test-form #name");
     var nameError = document.querySelector("#test4 .test-form .name-error");
     if (nameElement.value == null || nameElement.value == "" || nameElement.value.length < 4) {
